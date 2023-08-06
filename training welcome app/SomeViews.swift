@@ -38,6 +38,7 @@ final class SomeViews: UIView {
         super.layoutSubviews()
         addFirstView()
         addLogoPhoto()
+        addButton(logInButton)
         setupViewsConstraints()
     }
     
@@ -53,9 +54,13 @@ final class SomeViews: UIView {
             logoView.backgroundColor = UIColor(patternImage: brandingImage)
         }
     }
-    
+
+    private func addButton(_ button: UIButton){
+           self.addSubview(button) // Добавляем переданную кнопку на представление
+       }
     
     private func setupViewsConstraints() {
+        //констрейнты фоновой картинки
         firstView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             firstView.topAnchor.constraint(equalTo: self.topAnchor),
@@ -63,8 +68,18 @@ final class SomeViews: UIView {
             firstView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             firstView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])
+        //констрейнты лого картинки
         logoView.translatesAutoresizingMaskIntoConstraints = false
         logoView.frame = CGRect(x: 117, y: 448, width: 141.13, height: 99.03)
+        
+        //констрейнты кнопки logIn
+               logInButton.translatesAutoresizingMaskIntoConstraints = false
+               NSLayoutConstraint.activate([
+                   logInButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 22),
+                   logInButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 591),
+                   logInButton.widthAnchor.constraint(equalToConstant: 331),
+                   logInButton.heightAnchor.constraint(equalToConstant: 56)
+               ])
 
     }
 }
