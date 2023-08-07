@@ -7,10 +7,12 @@ final class ViewController: UIViewController {
     private var anotherView = SomeViews()
     
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func loadView() {
         self.view = anotherView
     }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//    }
 }
 
