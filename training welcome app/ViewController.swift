@@ -8,7 +8,7 @@ protocol showNewViewProtocol {
 final class ViewController: UIViewController {
     
     // создаем тут SomeViews
-    private var anotherView = SomeViews()
+    private var anotherView = ViewsForfirstPage()
     override func loadView() {
         self.view = anotherView
         // подписываем ее как делегат

@@ -1,10 +1,12 @@
 import UIKit
 
-class logInView: UIViewController {
+final class logInView: UIViewController {
     
-    
-    override func viewDidLoad() {
-        view.backgroundColor = .blue
-    }
-    
+
+    private var anotherView = ViewsForLogInPage()
+    override func loadView() {
+        self.view = anotherView
+        view.backgroundColor = .white
+    }    
 }
+

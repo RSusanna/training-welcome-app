@@ -1,11 +1,18 @@
 
 import UIKit
 
-final class SomeViews: UIView {
+final class ViewsForfirstPage: UIView {
     
     var delegate: showNewViewProtocol!
-    
-    
+   
+    private let blueColor: UIColor = {
+        let color = UIColor(red: 0.208, green: 0.762, blue: 0.757, alpha: 1)
+        return color
+    }()
+    private let darkBlueColor: UIColor = {
+      let color = UIColor(red: 30/255, green: 35/255, blue: 44/255, alpha: 1)
+        return color
+    }()
     private let firstView: UIView = {
         let view = UIView()
         return view
@@ -19,7 +26,8 @@ final class SomeViews: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .brown
+        guestButton.setTitleColor(blueColor, for: .normal)
+        logInButton.backgroundColor = darkBlueColor
     }
     
     private let logInButton: UIButton = {
@@ -27,8 +35,6 @@ final class SomeViews: UIView {
         button.setTitle("Login", for: .normal)
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont(name: "Urbanist-SemiBold", size: 15)
-        let backgroundColor = UIColor(red: 30/255, green: 35/255, blue: 44/255, alpha: 1.0)
-        button.backgroundColor = backgroundColor
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(actionButtonLogIn), for: .touchUpInside)
         return button
@@ -46,12 +52,8 @@ final class SomeViews: UIView {
     }()
     private let guestButton: UIButton = {
         let button = UIButton(type: .system)
-        //       спросить поч ошибка Value of type 'UIButton' has no member 'attributedText'
-        //       button.attributedText = NSMutableAttributedString(string: "Continue as a guest", attributes: [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue])
         button.setTitle("Continue as a guest", for: .normal)
         button.titleLabel?.font =  UIFont(name: "Urbanist-Bold", size: 15)
-        button.setTitleColor(.systemBlue, for: .normal)
-        //       button.setTitleColor( UIColor(red: 53, green: 194, blue: 193, alpha: 1), for: .normal)
         return button
     }()
     required init?(coder: NSCoder) {
