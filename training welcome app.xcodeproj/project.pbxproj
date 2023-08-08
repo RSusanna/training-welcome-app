@@ -13,6 +13,7 @@
 		D1676E832A7F996B005B47CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1676E822A7F996B005B47CC /* Assets.xcassets */; };
 		D1676E862A7F996B005B47CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1676E842A7F996B005B47CC /* LaunchScreen.storyboard */; };
 		D1676E8E2A7F9F54005B47CC /* App Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1676E8D2A7F9F54005B47CC /* App Images.swift */; };
+		D1B7CA312A8168BA009CC365 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B7CA302A8168BA009CC365 /* LogInView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		D1676E852A7F996B005B47CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1676E872A7F996B005B47CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1676E8D2A7F9F54005B47CC /* App Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App Images.swift"; sourceTree = "<group>"; };
+		D1B7CA302A8168BA009CC365 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		D1676E782A7F9964005B47CC /* training welcome app */ = {
 			isa = PBXGroup;
 			children = (
+				D1B7CA302A8168BA009CC365 /* LogInView.swift */,
 				D1563AF42A7FCD47004CAB64 /* SomeViews.swift */,
 				D1676E8D2A7F9F54005B47CC /* App Images.swift */,
 				D1676E792A7F9964005B47CC /* AppDelegate.swift */,
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1B7CA312A8168BA009CC365 /* LogInView.swift in Sources */,
 				D1563AF52A7FCD47004CAB64 /* SomeViews.swift in Sources */,
 				D1676E8E2A7F9F54005B47CC /* App Images.swift in Sources */,
 				D1676E7E2A7F9964005B47CC /* ViewController.swift in Sources */,
