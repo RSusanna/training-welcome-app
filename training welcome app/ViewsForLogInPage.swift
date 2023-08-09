@@ -72,6 +72,21 @@ final class ViewsForLogInPage: UIView {
     }()
     //MARK: - кнопки
     
+    private let backButtonNavigation: UINavigationItem = {
+     let button = UINavigationItem()
+    button.backAction?.image = UIImage(named: "backButton")
+  return button
+    }()
+    private let backButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.layer.cornerRadius = 5
+        if let image = UIImage(named: "back") {
+            button.setBackgroundImage(image, for: .normal)
+            button.layer.borderWidth = 2
+            button.layer.borderColor = UIColor(red: 0.91, green: 0.925, blue: 0.957, alpha: 1).cgColor
+        }
+        return button
+    }()
     private let forgotPasswordButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Forgot Password?", for: .normal)
@@ -199,7 +214,7 @@ final class ViewsForLogInPage: UIView {
         NSLayoutConstraint.activate([
             dontHaveAccText.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 61),
             dontHaveAccText.topAnchor.constraint(equalTo: self.topAnchor, constant: 765),
-//          dontHaveAccText.widthAnchor.constraint(equalToConstant:---)
+            dontHaveAccText.widthAnchor.constraint(equalToConstant: 120),
             dontHaveAccText.heightAnchor.constraint(equalToConstant: 21)
         ])
         //констрейнты emailTextField
