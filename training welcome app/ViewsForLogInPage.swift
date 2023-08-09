@@ -12,7 +12,7 @@ final class ViewsForLogInPage: UIView {
         return color
     }()
 
-    //MARK: - текста экрана
+    //MARK: - текст
     private let welcomeText: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "HelveticaNeue-Bold", size: 30)
@@ -31,18 +31,12 @@ final class ViewsForLogInPage: UIView {
 //        textInformation.textColor = UIColor(red: 0.416, green: 0.439, blue: 0.486, alpha: 1)
         return textInformation
     }()
-    private let dontHaveAccText: UILabel = {
-        var textInformation =  UILabel()
-        textInformation.text = "Don’t have an account?"
-        textInformation.font = UIFont(name: "Urbanist-Medium", size: 15)
-        textInformation.textColor = UIColor(red: 0.118, green: 0.137, blue: 0.173, alpha: 1)
-        return textInformation
-    }()
-    //MARK: - Текстфилды экрана
+
+    //MARK: - Текстфилды
 
     let emailTextField: UITextField = {
         let view = UITextField()
-        view.placeholder = "Enter your email"
+        view.placeholder = " Enter your email"
         view.layer.cornerRadius = 8
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor(red: 0.91, green: 0.925, blue: 0.957, alpha: 1).cgColor
@@ -50,14 +44,59 @@ final class ViewsForLogInPage: UIView {
     }()
     let passwordTextField: UITextField = {
         let view = UITextField()
-        view.placeholder = "Enter your password"
+        view.placeholder = " Enter your password"
         view.layer.cornerRadius = 8
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor(red: 0.91, green: 0.925, blue: 0.957, alpha: 1).cgColor
        return view
     }()
-
-
+    //MARK: - кнопки
+    
+    private let forgotPasswordButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Forgot Password?", for: .normal)
+        button.setTitleColor(.gray, for: .normal)
+        return button
+    }()
+    private let logInButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Login", for: .normal)
+        button.layer.cornerRadius = 5
+        button.titleLabel?.font = UIFont(name: "Urbanist-SemiBold", size: 15)
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
+    private let dontHaveAccText: UIButton = {
+        var textInformation =  UIButton()
+        textInformation.setTitle("Don’t have an account? Register Now", for: .normal)
+        textInformation.titleLabel?.font = UIFont(name: "Urbanist-SemiBold", size: 15)
+        return textInformation
+    }()
+    private let googleButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.layer.cornerRadius = 5
+        if let image = UIImage(named: "google") {
+        button.setBackgroundImage(image, for: .normal)
+            
+        }
+        return button
+    }()
+    private let appleButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.layer.cornerRadius = 5
+        if let image = UIImage(named: "apple") {
+        button.setBackgroundImage(image, for: .normal)
+        }
+        return button
+    }()
+    private let faceButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.layer.cornerRadius = 5
+        if let image = UIImage(named: "facebook") {
+        button.setBackgroundImage(image, for: .normal)
+        }
+        return button
+    }()
     
     //MARK: - init'ы
     required init?(coder: NSCoder) {
@@ -68,6 +107,12 @@ final class ViewsForLogInPage: UIView {
         welcomeText.textColor = darkBlueColor
         emailTextField.backgroundColor = grayColor
         passwordTextField.backgroundColor = grayColor
+        forgotPasswordButton.titleLabel?.textColor = grayColor
+        logInButton.backgroundColor = darkBlueColor
+        googleButton.clipsToBounds = true
+        faceButton.clipsToBounds = true
+        appleButton.clipsToBounds = true
+
     }
     
     
@@ -86,7 +131,11 @@ final class ViewsForLogInPage: UIView {
         self.addSubview(dontHaveAccText)
         self.addSubview(emailTextField)
         self.addSubview(passwordTextField)
-
+        self.addSubview(forgotPasswordButton)
+        self.addSubview(logInButton)
+        self.addSubview(googleButton)
+        self.addSubview(appleButton)
+        self.addSubview(faceButton)
     }
     //MARK: - настройка констрейнтов
     private func setupViewsConstraints() {
@@ -130,8 +179,44 @@ final class ViewsForLogInPage: UIView {
             passwordTextField.widthAnchor.constraint(equalToConstant: 331),
             passwordTextField.heightAnchor.constraint(equalToConstant: 51)
             ])
+        //констрейнты forgotPasswordButton
+        forgotPasswordButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            forgotPasswordButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 242),
+            forgotPasswordButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 377),
+            forgotPasswordButton.widthAnchor.constraint(equalToConstant: 111),
+            forgotPasswordButton.heightAnchor.constraint(equalToConstant: 17)
+        ])
+        //констрейнты logInButton
+        logInButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            logInButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 22),
+            logInButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 424),
+            logInButton.widthAnchor.constraint(equalToConstant: 331),
+            logInButton.heightAnchor.constraint(equalToConstant: 56)
+        ])
+        // констрейнты для соц сетей
+        faceButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            faceButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 59),
+            faceButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 569),
+            faceButton.widthAnchor.constraint(equalToConstant: 20),
+            faceButton.heightAnchor.constraint(equalToConstant: 20)
+        ])
+        googleButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            googleButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 172),
+            googleButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 569),
+            googleButton.widthAnchor.constraint(equalToConstant: 20),
+            googleButton.heightAnchor.constraint(equalToConstant: 20)
+        ])
+        appleButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            appleButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 285),
+            appleButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 569),
+            appleButton.widthAnchor.constraint(equalToConstant: 20),
+            appleButton.heightAnchor.constraint(equalToConstant: 20)
+        ])
     }
 }
- 
-
 
