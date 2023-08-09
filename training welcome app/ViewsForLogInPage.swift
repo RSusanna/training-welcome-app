@@ -11,6 +11,16 @@ final class ViewsForLogInPage: UIView {
         let color = UIColor(red: 0.118, green: 0.137, blue: 0.173, alpha: 1)
         return color
     }()
+    //MARK: - вьюшки
+    
+    private let leftLine: UIView = {
+        let view = UIView()
+        return view
+    }()
+    private let rightLine: UIView = {
+        let view = UIView()
+        return view
+    }()
 
     //MARK: - текст
     private let welcomeText: UILabel = {
@@ -45,10 +55,20 @@ final class ViewsForLogInPage: UIView {
     let passwordTextField: UITextField = {
         let view = UITextField()
         view.placeholder = " Enter your password"
+        view.isSecureTextEntry = true
         view.layer.cornerRadius = 8
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor(red: 0.91, green: 0.925, blue: 0.957, alpha: 1).cgColor
        return view
+    }()
+    // Создаем кнопку для переключения видимости текста
+    private lazy var toggleButton: UIButton = {
+        toggleButton = UIButton(type: .custom)
+        toggleButton.setImage(UIImage(named: "openEye"), for: .normal)
+        toggleButton.setImage(UIImage(named: "eye"), for: .selected)
+        toggleButton.frame = CGRect(x: 0, y: 0, width: 8, height: 8)
+        toggleButton.addTarget(self, action: #selector(toggleVisibility(_:)), for: .touchUpInside)
+    return toggleButton
     }()
     //MARK: - кнопки
     
@@ -76,24 +96,33 @@ final class ViewsForLogInPage: UIView {
         let button = UIButton(type: .system)
         button.layer.cornerRadius = 5
         if let image = UIImage(named: "google") {
-        button.setBackgroundImage(image, for: .normal)
-            
+            button.setBackgroundImage(image, for: .normal)
+            button.layer.borderWidth = 2
+            button.layer.borderColor = UIColor(red: 0.91, green: 0.925, blue: 0.957, alpha: 1).cgColor
         }
         return button
     }()
     private let appleButton: UIButton = {
         let button = UIButton(type: .system)
         button.layer.cornerRadius = 5
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor(red: 0.91, green: 0.925, blue: 0.957, alpha: 1).cgColor
         if let image = UIImage(named: "apple") {
-        button.setBackgroundImage(image, for: .normal)
+            button.setBackgroundImage(image, for: .normal)
+            button.layer.borderWidth = 2
+            button.layer.borderColor = UIColor(red: 0.91, green: 0.925, blue: 0.957, alpha: 1).cgColor
         }
         return button
     }()
     private let faceButton: UIButton = {
         let button = UIButton(type: .system)
         button.layer.cornerRadius = 5
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor(red: 0.91, green: 0.925, blue: 0.957, alpha: 1).cgColor
         if let image = UIImage(named: "facebook") {
         button.setBackgroundImage(image, for: .normal)
+        button.contentHorizontalAlignment = .center
+        button.contentVerticalAlignment = .center
         }
         return button
     }()
@@ -112,7 +141,11 @@ final class ViewsForLogInPage: UIView {
         googleButton.clipsToBounds = true
         faceButton.clipsToBounds = true
         appleButton.clipsToBounds = true
-
+        leftLine.backgroundColor = grayColor
+        rightLine.backgroundColor = grayColor
+        passwordTextField.rightView = toggleButton
+        passwordTextField.rightView?.frame(forAlignmentRect: .init(x: 0, y: 0, width: 9, height: 9))
+        passwordTextField.rightViewMode = .always
     }
     
     
@@ -121,6 +154,7 @@ final class ViewsForLogInPage: UIView {
         super.layoutSubviews()
         addViews()
         setupViewsConstraints()
+        
         // сюда прописать добавление всех деталей экрана
     }
     
@@ -136,6 +170,11 @@ final class ViewsForLogInPage: UIView {
         self.addSubview(googleButton)
         self.addSubview(appleButton)
         self.addSubview(faceButton)
+        self.addSubview(leftLine)
+        self.addSubview(rightLine)
+//        self.addSubview(toggleButton)
+
+        
     }
     //MARK: - настройка констрейнтов
     private func setupViewsConstraints() {
@@ -200,23 +239,35 @@ final class ViewsForLogInPage: UIView {
         NSLayoutConstraint.activate([
             faceButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 59),
             faceButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 569),
-            faceButton.widthAnchor.constraint(equalToConstant: 20),
-            faceButton.heightAnchor.constraint(equalToConstant: 20)
+            faceButton.widthAnchor.constraint(equalToConstant: 50),
+            faceButton.heightAnchor.constraint(equalToConstant: 50)
         ])
         googleButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             googleButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 172),
             googleButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 569),
-            googleButton.widthAnchor.constraint(equalToConstant: 20),
-            googleButton.heightAnchor.constraint(equalToConstant: 20)
+            googleButton.widthAnchor.constraint(equalToConstant: 50),
+            googleButton.heightAnchor.constraint(equalToConstant: 50)
         ])
         appleButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             appleButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 285),
             appleButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 569),
-            appleButton.widthAnchor.constraint(equalToConstant: 20),
-            appleButton.heightAnchor.constraint(equalToConstant: 20)
+            appleButton.widthAnchor.constraint(equalToConstant: 50),
+            appleButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+        // констрейнты для линий
+        leftLine.translatesAutoresizingMaskIntoConstraints = false
+        leftLine.frame = CGRect(x: 22, y: 524, width: 112, height: 1)
+        rightLine.translatesAutoresizingMaskIntoConstraints = false
+        rightLine.frame = CGRect(x: 242, y: 524, width: 112, height: 1)
+
+
+    }
+    @objc func toggleVisibility(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        passwordTextField.isSecureTextEntry = !sender.isSelected
     }
 }
+
 
