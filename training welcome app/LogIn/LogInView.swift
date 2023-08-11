@@ -11,7 +11,6 @@ final class LogInView: UIView {
         return color
     }()
     //MARK: - вьюшки
-    
     private let leftLine: UIView = {
         let view = UIView()
         return view
@@ -186,13 +185,11 @@ final class LogInView: UIView {
         self.addSubview(faceButton)
         self.addSubview(leftLine)
         self.addSubview(rightLine)
-//        self.addSubview(toggleButton)
 
         
     }
     //MARK: - настройка констрейнтов
     private func setupViewsConstraints() {
-        //констрейнты welcomeText
         welcomeText.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             welcomeText.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 22),
@@ -200,7 +197,6 @@ final class LogInView: UIView {
             welcomeText.widthAnchor.constraint(equalToConstant: 280),
             welcomeText.heightAnchor.constraint(equalToConstant: 78)
         ])
-        //констрейнты orLogInWithText
         orLogInWithText.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             orLogInWithText.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 146),
@@ -208,7 +204,6 @@ final class LogInView: UIView {
             orLogInWithText.widthAnchor.constraint(equalToConstant: 84),
             orLogInWithText.heightAnchor.constraint(equalToConstant: 17)
             ])
-        //констрейнты dontHaveAccText
         dontHaveAccText.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             dontHaveAccText.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 61),
@@ -216,7 +211,6 @@ final class LogInView: UIView {
             dontHaveAccText.widthAnchor.constraint(equalToConstant: 120),
             dontHaveAccText.heightAnchor.constraint(equalToConstant: 21)
         ])
-        //констрейнты emailTextField
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             emailTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 22),
@@ -224,7 +218,6 @@ final class LogInView: UIView {
             emailTextField.widthAnchor.constraint(equalToConstant: 331),
             emailTextField.heightAnchor.constraint(equalToConstant: 51)
         ])
-        //констрейнты passwordTextField
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             passwordTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 22),
@@ -232,7 +225,6 @@ final class LogInView: UIView {
             passwordTextField.widthAnchor.constraint(equalToConstant: 331),
             passwordTextField.heightAnchor.constraint(equalToConstant: 51)
             ])
-        //констрейнты forgotPasswordButton
         forgotPasswordButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             forgotPasswordButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 242),
@@ -240,7 +232,6 @@ final class LogInView: UIView {
             forgotPasswordButton.widthAnchor.constraint(equalToConstant: 111),
             forgotPasswordButton.heightAnchor.constraint(equalToConstant: 17)
         ])
-        //констрейнты logInButton
         logInButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             logInButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 22),
@@ -248,7 +239,6 @@ final class LogInView: UIView {
             logInButton.widthAnchor.constraint(equalToConstant: 331),
             logInButton.heightAnchor.constraint(equalToConstant: 56)
         ])
-        // констрейнты для соц сетей
         faceButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             faceButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 59),
@@ -270,7 +260,6 @@ final class LogInView: UIView {
             appleButton.widthAnchor.constraint(equalToConstant: 50),
             appleButton.heightAnchor.constraint(equalToConstant: 50)
         ])
-        // констрейнты для линий
         leftLine.translatesAutoresizingMaskIntoConstraints = false
         leftLine.frame = CGRect(x: 22, y: 524, width: 112, height: 1)
         rightLine.translatesAutoresizingMaskIntoConstraints = false
@@ -278,6 +267,7 @@ final class LogInView: UIView {
 
 
     }
+    //скрытие текста у текстфилда
     @objc func toggleVisibility(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         passwordTextField.isSecureTextEntry = !sender.isSelected

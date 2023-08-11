@@ -42,6 +42,7 @@ final class StartView: BaseView {
             title: "Login", titleColor: .white, font: .semibold15,
             backgroundColor: .darkColor
         )
+        //открытие новой вьюшки
         button.addTarget(self, action: #selector(actionButtonLogIn), for: .touchUpInside)
         return button
     }()
@@ -77,12 +78,12 @@ final class StartView: BaseView {
 }
 
 // MARK: - Private
-
+//открытие нового вью
 private extension StartView {
     @objc func actionButtonLogIn(){
         delegate?.showNewView(VC: logInViewController())
     }
-    
+    //добавление вьюшек
     func addSubviews() {
         [backgroundImageView, loginButton,
          registerButton, guestButton, logoImageView

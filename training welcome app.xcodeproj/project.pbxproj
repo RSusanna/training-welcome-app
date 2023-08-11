@@ -71,9 +71,9 @@
 			isa = PBXGroup;
 			children = (
 				D1F8AC442A84F89F00B4F7B6 /* Base */,
-				D1F8AC422A84F53400B4F7B6 /* Extension */,
+				D1F8AC482A84FECB00B4F7B6 /* Start */,
 				D1F8AC4D2A8505A400B4F7B6 /* LogIn */,
-				D1F8AC482A84FECB00B4F7B6 /* StartView */,
+				D1F8AC422A84F53400B4F7B6 /* Extension */,
 				D1676E792A7F9964005B47CC /* AppDelegate.swift */,
 				D1676E822A7F996B005B47CC /* Assets.xcassets */,
 				D1676E842A7F996B005B47CC /* LaunchScreen.storyboard */,
@@ -118,13 +118,13 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		D1F8AC482A84FECB00B4F7B6 /* StartView */ = {
+		D1F8AC482A84FECB00B4F7B6 /* Start */ = {
 			isa = PBXGroup;
 			children = (
 				D1563AF42A7FCD47004CAB64 /* StartView.swift */,
 				D1676E7D2A7F9964005B47CC /* StartViewController.swift */,
 			);
-			path = StartView;
+			path = Start;
 			sourceTree = "<group>";
 		};
 		D1F8AC4D2A8505A400B4F7B6 /* LogIn */ = {
