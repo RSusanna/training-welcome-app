@@ -19,7 +19,10 @@ extension UIColor {
             alpha: CGFloat(1.0)
         )
     }
-    class var darkColor: UIColor {
+    class var darkBlue: UIColor {
         return UIColor(rgb: 0x1E232C)
+    }
+    class var lightGray: UIColor{
+        return UIColor(rgb: 0xE8ECF4)
     }
 }

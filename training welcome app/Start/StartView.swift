@@ -7,8 +7,8 @@ protocol ShowNewViewProtocol: AnyObject {
 
 extension StartView {
     struct Constants {
-        let darkColor = AppColor.darkColor.color
-        let lightBlueColor = AppColor.lightBlue.color
+        let darkColor = AppColor.darkBlueUIColor.color
+        let lightBlueColor = AppColor.lightBlueUIColor.color
         
         let backgroundImage: UIImage? = UIImage(named: "backgroundImage")
         let logoImage: UIImage? = UIImage(named: "Branding")
@@ -36,11 +36,11 @@ final class StartView: BaseView {
     private lazy var logoImageView: UIImageView = {
         return UIImageView(image: constants.logoImage)
     }()
-    
+    //MARK: - кнопки
     private lazy var loginButton: UIButton = {
         let button = createMainButton(
             title: "Login", titleColor: .white, font: .semibold15,
-            backgroundColor: .darkColor
+            backgroundColor: .darkBlue
         )
         //открытие новой вьюшки
         button.addTarget(self, action: #selector(actionButtonLogIn), for: .touchUpInside)
@@ -89,7 +89,7 @@ private extension StartView {
          registerButton, guestButton, logoImageView
         ].forEach({ self.addSubview($0) })
     }
-    
+    //MARK: - констрейнты
     func setupViewsConstraints() {
         //констрейнты фоновой картинки
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false

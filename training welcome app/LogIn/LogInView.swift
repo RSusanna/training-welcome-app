@@ -1,6 +1,6 @@
 import UIKit
 
-final class LogInView: UIView {
+final class LogInView: BaseView {
     //MARK: - цвета экрана
     private let grayColor: UIColor = {
         let color = UIColor(red: 0.91, green: 0.925, blue: 0.957, alpha: 1)
@@ -21,16 +21,10 @@ final class LogInView: UIView {
     }()
 
     //MARK: - текст
-    private let welcomeText: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "HelveticaNeue-Bold", size: 30)
-        label.textColor = .black
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
-        label.text = "Welcome back! Glad to see you, Again!"
+    private lazy var welcomeText: UILabel = {
+        let label = createMainUILabel(text: "Welcome back! Glad to see you, Again!")
         return label
     }()
-
     private let orLogInWithText: UILabel = {
         var textInformation =  UILabel()
         textInformation.text = "Or Login with"
@@ -70,75 +64,35 @@ final class LogInView: UIView {
     }()
     //MARK: - кнопки
     
-    private let backButtonNavigation: UINavigationItem = {
-     let button = UINavigationItem()
-    button.backAction?.image = UIImage(named: "backButton")
-  return button
-    }()
-    private let backButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.layer.cornerRadius = 5
-        if let image = UIImage(named: "back") {
-            button.setBackgroundImage(image, for: .normal)
-            button.layer.borderWidth = 2
-            button.layer.borderColor = UIColor(red: 0.91, green: 0.925, blue: 0.957, alpha: 1).cgColor
-        }
+    private lazy var forgotPasswordButton: UIButton = {
+        let button = createMainButton(title: "Forgot Password?", titleColor: .darkGray, font: .semibold15, backgroundColor: .white)
         return button
     }()
-    private let forgotPasswordButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Forgot Password?", for: .normal)
-        button.setTitleColor(.gray, for: .normal)
+    private lazy var logInButton: UIButton = {
+        let button = createMainButton(title: "Login", titleColor: .white, font: .semibold15, backgroundColor: .darkBlue)
         return button
     }()
-    private let logInButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Login", for: .normal)
-        button.layer.cornerRadius = 5
-        button.titleLabel?.font = UIFont(name: "Urbanist-SemiBold", size: 15)
-        button.setTitleColor(.white, for: .normal)
-        return button
-    }()
-    private let dontHaveAccText: UIButton = {
-        var textInformation =  UIButton()
-        textInformation.setTitle("Don’t have an account? Register Now", for: .normal)
-        textInformation.titleLabel?.font = UIFont(name: "Urbanist-SemiBold", size: 15)
+    private lazy var dontHaveAccText: UIButton = {
+        let textInformation =  createMainButton(title: "Don’t have an account? Register Now", titleColor: .darkGray, font: .semibold15, backgroundColor: .white)
         return textInformation
     }()
-    private let googleButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.layer.cornerRadius = 5
-        if let image = UIImage(named: "google") {
-            button.setBackgroundImage(image, for: .normal)
-            button.layer.borderWidth = 2
-            button.layer.borderColor = UIColor(red: 0.91, green: 0.925, blue: 0.957, alpha: 1).cgColor
-        }
+    private lazy var googleButton: UIButton = {
+        let button = createImageButton(imageName: "google", borderColor: .lightGray)
         return button
     }()
-    private let appleButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.layer.cornerRadius = 5
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor(red: 0.91, green: 0.925, blue: 0.957, alpha: 1).cgColor
-        if let image = UIImage(named: "apple") {
-            button.setBackgroundImage(image, for: .normal)
-            button.layer.borderWidth = 2
-            button.layer.borderColor = UIColor(red: 0.91, green: 0.925, blue: 0.957, alpha: 1).cgColor
-        }
+    private lazy var appleButton: UIButton = {
+        let button = createImageButton(imageName: "apple", borderColor: .lightGray)
         return button
     }()
-    private let faceButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.layer.cornerRadius = 5
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor(red: 0.91, green: 0.925, blue: 0.957, alpha: 1).cgColor
-        if let image = UIImage(named: "facebook") {
-        button.setBackgroundImage(image, for: .normal)
-        button.contentHorizontalAlignment = .center
-        button.contentVerticalAlignment = .center
-        }
+    private lazy var faceButton: UIButton = {
+        let button = createImageButton(imageName: "facebook", borderColor: .lightGray)
         return button
     }()
+    //MARK: - Картинка лого
+//    private let brandImage: UIImageView = {
+//        let image: UIImage
+//        return
+//    }()
     
     //MARK: - init'ы
     required init?(coder: NSCoder) {
@@ -167,8 +121,6 @@ final class LogInView: UIView {
         super.layoutSubviews()
         addViews()
         setupViewsConstraints()
-        
-        // сюда прописать добавление всех деталей экрана
     }
     
     //MARK: - Добавление
@@ -184,9 +136,7 @@ final class LogInView: UIView {
         self.addSubview(appleButton)
         self.addSubview(faceButton)
         self.addSubview(leftLine)
-        self.addSubview(rightLine)
-
-        
+        self.addSubview(rightLine)        
     }
     //MARK: - настройка констрейнтов
     private func setupViewsConstraints() {
@@ -208,8 +158,6 @@ final class LogInView: UIView {
         NSLayoutConstraint.activate([
             dontHaveAccText.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 61),
             dontHaveAccText.topAnchor.constraint(equalTo: self.topAnchor, constant: 765),
-            dontHaveAccText.widthAnchor.constraint(equalToConstant: 120),
-            dontHaveAccText.heightAnchor.constraint(equalToConstant: 21)
         ])
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

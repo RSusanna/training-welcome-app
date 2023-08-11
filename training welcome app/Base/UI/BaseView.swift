@@ -25,6 +25,21 @@ class BaseView: UIView {
         return button
     }
     
+    func createImageView(imageName: String) -> UIImageView {
+        let imageView = UIImageView()
+        return imageView
+    }
+    
+    func createMainUILabel(text: String) -> UILabel {
+        let textView = UILabel()
+        textView.text = text
+        textView.textColor = .darkBlue
+        textView.lineBreakMode = .byWordWrapping
+        textView.numberOfLines = 0
+        textView.font = UIFont(name: "HelveticaNeue-Bold", size: 30)
+        return textView
+    }
+
     func toStackView(subviews: [UIView],
                      axis: NSLayoutConstraint.Axis, spacing: CGFloat,
                      alignment: UIStackView.Alignment,
