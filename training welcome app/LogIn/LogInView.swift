@@ -1,7 +1,6 @@
-
 import UIKit
 
-final class ViewsForLogInPage: UIView {
+final class LogInView: UIView {
     //MARK: - цвета экрана
     private let grayColor: UIColor = {
         let color = UIColor(red: 0.91, green: 0.925, blue: 0.957, alpha: 1)

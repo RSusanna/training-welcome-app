@@ -1,14 +1,9 @@
 import UIKit
-//создаем протокол покажи мне новую вью
-protocol showNewViewProtocol {
-    func showNewView( VC: UIViewController)
-}
 
-
-final class ViewController: UIViewController {
+final class StartViewController: BaseViewController {
     
     // создаем тут SomeViews
-    private var anotherView = ViewsForfirstPage()
+    private var anotherView = StartView()
     override func loadView() {
         self.view = anotherView
         // подписываем ее как делегат
@@ -17,7 +12,7 @@ final class ViewController: UIViewController {
 }
 
 // подписываем под протокол покажи мне новую вью
-extension ViewController: showNewViewProtocol {
+extension StartViewController: ShowNewViewProtocol {
     func showNewView(VC: UIViewController) {
         let VC = VC
         // соответственно открываем новую вью
