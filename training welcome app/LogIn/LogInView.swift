@@ -30,27 +30,17 @@ final class LogInView: BaseView {
         textInformation.text = "Or Login with"
         textInformation.font = UIFont(name: "HelveticaNeue", size: 14)
         textInformation.textColor = .black
-//        textInformation.textColor = UIColor(red: 0.416, green: 0.439, blue: 0.486, alpha: 1)
         return textInformation
     }()
 
     //MARK: - Текстфилды
 
     let emailTextField: UITextField = {
-        let view = UITextField()
-        view.placeholder = " Enter your email"
-        view.layer.cornerRadius = 8
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor(red: 0.91, green: 0.925, blue: 0.957, alpha: 1).cgColor
-       return view
+        let view = AppTextField(fieldType: .email)
+        return view
     }()
     let passwordTextField: UITextField = {
-        let view = UITextField()
-        view.placeholder = " Enter your password"
-        view.isSecureTextEntry = true
-        view.layer.cornerRadius = 8
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor(red: 0.91, green: 0.925, blue: 0.957, alpha: 1).cgColor
+        let view = AppTextField(fieldType: .password)
        return view
     }()
     // Создаем кнопку для переключения видимости текста
@@ -212,8 +202,6 @@ final class LogInView: BaseView {
         leftLine.frame = CGRect(x: 22, y: 524, width: 112, height: 1)
         rightLine.translatesAutoresizingMaskIntoConstraints = false
         rightLine.frame = CGRect(x: 242, y: 524, width: 112, height: 1)
-
-
     }
     //скрытие текста у текстфилда
     @objc func toggleVisibility(_ sender: UIButton) {

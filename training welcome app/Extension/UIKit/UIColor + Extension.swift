@@ -25,4 +25,7 @@ extension UIColor {
     class var lightGray: UIColor{
         return UIColor(rgb: 0xE8ECF4)
     }
+    class var verylightGrayColor: UIColor {
+        return UIColor(rgb: 0xF7F8F9)
+    }
 }
