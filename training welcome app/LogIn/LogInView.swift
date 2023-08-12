@@ -16,10 +16,12 @@ final class LogInView: BaseView {
     //MARK: - вьюшки
     private lazy var leftLine: UIView = {
         let view = createLeftLineView()
+        view.frame = CGRect(x: 22, y: 524, width: 112, height: 1)
         return view
     }()
     private lazy var rightLine: UIView = {
         let view = createRightLineView()
+        view.frame = CGRect(x: 242, y: 524, width: 112, height: 1)
         return view
     }()
 

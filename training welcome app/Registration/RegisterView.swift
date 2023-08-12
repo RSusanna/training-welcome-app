@@ -23,22 +23,51 @@ final class RegisterView: BaseView {
         textInformation.textColor = .black
         return textInformation
     }()
+    //MARK: - вьюшки
+    private lazy var leftLine: UIView = {
+        let view = createLeftLineView()
+        view.frame = CGRect(x: 22, y: 625, width: 112, height: 1)
+        return view
+    }()
+    private lazy var rightLine: UIView = {
+        let view = createRightLineView()
+        view.frame = CGRect(x: 250, y: 625, width: 112, height: 1)
+        return view
+    }()
+    //MARK: - текст
+    private let orRegisterText: UILabel = {
+        var textInformation =  UILabel()
+        textInformation.text = "Or Register with"
+        textInformation.font = UIFont(name: "HelveticaNeue", size: 14)
+        textInformation.textColor = .black
+        return textInformation
+    }()
     //MARK: - кнопки
     
     private lazy var toRegisterButton: UIButton = {
         let button = createMainButton(title: "Register", titleColor: .white, font: .semibold15, backgroundColor: .darkBlue, radius: 8)
         return button
     }()
-    
-    //MARK: - вьюшки
-    private lazy var leftLine: UIView = {
-        let view = createLeftLineView()
-        return view
+    private lazy var googleButton: UIButton = {
+        let button = createImageButton(imageName: "google", borderColor: .lightGray)
+        return button
     }()
-    private lazy var rightLine: UIView = {
-        let view = createRightLineView()
-        return view
+    private lazy var appleButton: UIButton = {
+        let button = createImageButton(imageName: "apple", borderColor: .lightGray)
+        return button
     }()
+    private lazy var faceButton: UIButton = {
+        let button = createImageButton(imageName: "facebook", borderColor: .lightGray)
+        return button
+    }()
+    private lazy var socialMesiaStackView: UIStackView = {
+        let stack = toStackView(subviews: [googleButton,
+                                           faceButton,
+                                           appleButton],
+                                axis: .horizontal, spacing: 8, alignment: .fill, distribution: .fillEqually)
+        return stack
+    }()
+
     private lazy var verticalStackView: UIStackView = {
         let stack = toStackView(subviews: [userNameTextField,
                                            emailTextField,
@@ -82,11 +111,11 @@ final class RegisterView: BaseView {
         self.addSubview(orLogInWithText)
         self.addSubview(leftLine)
         self.addSubview(rightLine)
-//        self.addSubview(userNameTextField)
-//        self.addSubview(emailTextField)
-//        self.addSubview(passwordTextField)
-//        self.addSubview(confirmTextField)
         self.addSubview(verticalStackView)
+        self.addSubview(socialMesiaStackView)
+        self.addSubview(leftLine)
+        self.addSubview(rightLine)
+        self.addSubview(orRegisterText)
     }
     //MARK: - констрейнты
     func setupViewsConstraints() {
@@ -110,5 +139,18 @@ final class RegisterView: BaseView {
             verticalStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 235),
             verticalStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -231)
         ])
+        socialMesiaStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            socialMesiaStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 22),
+            socialMesiaStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -22),
+            socialMesiaStackView.heightAnchor.constraint(equalToConstant: 56),
+            socialMesiaStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -105)
+            ])
+        orRegisterText.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            orRegisterText.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 140),
+            orRegisterText.topAnchor.constraint(equalTo: self.topAnchor, constant: 620),
+//            orRegisterText.widthAnchor.constraint(equalToConstant: 101),
+            ])
     }
 }
