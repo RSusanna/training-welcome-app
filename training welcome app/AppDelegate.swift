@@ -18,3 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 
 }
+//MARK: - вопросы
+/*
+ почему константы именно структура?
+ */
+

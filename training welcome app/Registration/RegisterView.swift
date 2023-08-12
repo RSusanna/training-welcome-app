@@ -1,6 +1,12 @@
 // я остановилась на том, что мне нужно текстфилды внести в стеквью и доделать эту страницу в целом
 import UIKit
 
+extension RegisterView {
+    struct Constants {
+    let radiusOfViews = 8
+    }
+}
+
 final class RegisterView: BaseView {
     
     weak var delegate: ShowNewViewProtocol?
@@ -17,6 +23,13 @@ final class RegisterView: BaseView {
         textInformation.textColor = .black
         return textInformation
     }()
+    //MARK: - кнопки
+    
+    private lazy var toRegisterButton: UIButton = {
+        let button = createMainButton(title: "Register", titleColor: .white, font: .semibold15, backgroundColor: .darkBlue, radius: 8)
+        return button
+    }()
+    
     //MARK: - вьюшки
     private lazy var leftLine: UIView = {
         let view = createLeftLineView()
@@ -26,6 +39,19 @@ final class RegisterView: BaseView {
         let view = createRightLineView()
         return view
     }()
+    private lazy var verticalStackView: UIStackView = {
+        let stack = toStackView(subviews: [userNameTextField,
+                                           emailTextField,
+                                           passwordTextField,
+                                           confirmTextField,
+                                           toRegisterButton],
+                                axis: .vertical,
+                                spacing: 12,
+                                alignment: .fill,
+                                distribution: .fillEqually)
+        return stack
+    }()
+
     //MARK: - Текстфилды
     let userNameTextField: UITextField = {
         let view = AppTextField(fieldType: .username)
@@ -56,10 +82,11 @@ final class RegisterView: BaseView {
         self.addSubview(orLogInWithText)
         self.addSubview(leftLine)
         self.addSubview(rightLine)
-        self.addSubview(userNameTextField)
-        self.addSubview(emailTextField)
-        self.addSubview(passwordTextField)
-        self.addSubview(confirmTextField)
+//        self.addSubview(userNameTextField)
+//        self.addSubview(emailTextField)
+//        self.addSubview(passwordTextField)
+//        self.addSubview(confirmTextField)
+        self.addSubview(verticalStackView)
     }
     //MARK: - констрейнты
     func setupViewsConstraints() {
@@ -76,5 +103,12 @@ final class RegisterView: BaseView {
             orLogInWithText.widthAnchor.constraint(equalToConstant: 84),
             orLogInWithText.heightAnchor.constraint(equalToConstant: 17)
             ])
+        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            verticalStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 22),
+            verticalStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -22),
+            verticalStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 235),
+            verticalStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -231)
+        ])
     }
 }

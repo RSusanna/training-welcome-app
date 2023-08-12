@@ -7,8 +7,6 @@ protocol ShowNewViewProtocol: AnyObject {
 //MARK: - Константы
 extension StartView {
     struct Constants {
-        let darkColor = AppColor.darkBlueUIColor.color
-        let lightBlueColor = AppColor.lightBlueUIColor.color
         
         let backgroundImage: UIImage? = UIImage(named: "backgroundImage")
         let logoImage: UIImage? = UIImage(named: "Branding")
@@ -55,7 +53,7 @@ final class StartView: BaseView {
             backgroundColor: .white
         )
         button.layer.borderWidth = 1
-        button.layer.borderColor = constants.darkColor.cgColor
+        button.layer.borderColor = UIColor.darkBlue.cgColor
         return button
     }()
     
@@ -63,7 +61,7 @@ final class StartView: BaseView {
         let button = UIButton(type: .system)
         button.setTitle("Continue as a guest", for: .normal)
         button.titleLabel?.font =  .semibold15
-        button.setTitleColor(constants.lightBlueColor, for: .normal)
+        button.setTitleColor(.darkBlue, for: .normal)
         return button
     }()
     
