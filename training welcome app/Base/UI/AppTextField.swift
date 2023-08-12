@@ -5,6 +5,7 @@ enum TextFieldType {
     case username
     case email
     case password
+    case confirmPassword
     
     var title: String {
         switch self {
@@ -14,6 +15,8 @@ enum TextFieldType {
             return "Enter your email"
         case .password:
             return "Enter your password"
+        case .confirmPassword:
+            return "Confirm password"
         }
     }
 }

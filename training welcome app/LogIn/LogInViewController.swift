@@ -19,14 +19,5 @@ extension logInViewController: ShowNewViewProtocol {
         navigationController?.pushViewController(VC, animated: true)
     }
 }
-/*
- extension StartViewController: ShowNewViewProtocol {
-     func showNewView(VC: UIViewController) {
-         let VC = VC
-         // соответственно открываем новую вью
-         navigationController?.pushViewController(VC, animated: true)
-     }
- }
 
- */
 

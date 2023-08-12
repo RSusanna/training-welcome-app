@@ -93,7 +93,6 @@ private extension StartView {
     }
     //MARK: - констрейнты
     func setupViewsConstraints() {
-        //констрейнты фоновой картинки
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             backgroundImageView.topAnchor.constraint(equalTo: self.topAnchor),

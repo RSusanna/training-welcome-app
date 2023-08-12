@@ -14,14 +14,15 @@ final class LogInView: BaseView {
         return color
     }()
     //MARK: - вьюшки
-    private let leftLine: UIView = {
-        let view = UIView()
+    private lazy var leftLine: UIView = {
+        let view = createLeftLineView()
         return view
     }()
-    private let rightLine: UIView = {
-        let view = UIView()
+    private lazy var rightLine: UIView = {
+        let view = createRightLineView()
         return view
     }()
+
 
     //MARK: - текст
     private lazy var welcomeText: UILabel = {
@@ -84,12 +85,7 @@ final class LogInView: BaseView {
         let button = createImageButton(imageName: "facebook", borderColor: .lightGray)
         return button
     }()
-    //MARK: - Картинка лого
-//    private let brandImage: UIImageView = {
-//        let image: UIImage
-//        return
-//    }()
-    
+  
     //MARK: - init'ы
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -104,8 +100,6 @@ final class LogInView: BaseView {
         googleButton.clipsToBounds = true
         faceButton.clipsToBounds = true
         appleButton.clipsToBounds = true
-        leftLine.backgroundColor = grayColor
-        rightLine.backgroundColor = grayColor
         passwordTextField.rightView = toggleButton
         passwordTextField.rightView?.frame(forAlignmentRect: .init(x: 0, y: 0, width: 9, height: 9))
         passwordTextField.rightViewMode = .always
@@ -132,7 +126,7 @@ final class LogInView: BaseView {
         self.addSubview(appleButton)
         self.addSubview(faceButton)
         self.addSubview(leftLine)
-        self.addSubview(rightLine)        
+        self.addSubview(rightLine)
     }
     //MARK: - настройка констрейнтов
     private func setupViewsConstraints() {
@@ -204,10 +198,6 @@ final class LogInView: BaseView {
             appleButton.widthAnchor.constraint(equalToConstant: 50),
             appleButton.heightAnchor.constraint(equalToConstant: 50)
         ])
-        leftLine.translatesAutoresizingMaskIntoConstraints = false
-        leftLine.frame = CGRect(x: 22, y: 524, width: 112, height: 1)
-        rightLine.translatesAutoresizingMaskIntoConstraints = false
-        rightLine.frame = CGRect(x: 242, y: 524, width: 112, height: 1)
     }
     //скрытие текста у текстфилда
     @objc func toggleVisibility(_ sender: UIButton) {
@@ -218,7 +208,7 @@ final class LogInView: BaseView {
 //открытие нового вью
 private extension LogInView {
     @objc func actionRegisterButton(){
-        delegate?.showNewView(VC: logInViewController())
+        delegate?.showNewView(VC: RegisterViewController())
     }
 }
 

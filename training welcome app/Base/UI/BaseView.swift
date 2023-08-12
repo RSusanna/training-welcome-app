@@ -15,7 +15,19 @@ class BaseView: UIView {
         button.layer.cornerRadius = radius
         return button
     }
-    
+    func createLeftLineView() -> UIView {
+        let line = UIView()
+        line.backgroundColor = .lightGray
+        line.frame = CGRect(x: 22, y: 524, width: 112, height: 1)
+        return line
+    }
+    func createRightLineView() -> UIView {
+        let line = UIView()
+        line.backgroundColor = .lightGray
+        line.frame = CGRect(x: 242, y: 524, width: 112, height: 1)
+        return line
+    }
+
     func createImageButton(imageName: String, borderColor: UIColor, radius: CGFloat = 8) -> UIButton {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: imageName)?.withRenderingMode(.alwaysOriginal), for: .normal)
