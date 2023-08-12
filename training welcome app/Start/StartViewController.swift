@@ -17,6 +17,5 @@ extension StartViewController: ShowNewViewProtocol {
         let VC = VC
         // соответственно открываем новую вью
         navigationController?.pushViewController(VC, animated: true)
-//        present(VC, animated: true)
     }
 }

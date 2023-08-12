@@ -1,6 +1,9 @@
 import UIKit
 
 final class LogInView: BaseView {
+    
+    weak var delegate: ShowNewViewProtocol?
+    
     //MARK: - цвета экрана
     private let grayColor: UIColor = {
         let color = UIColor(red: 0.91, green: 0.925, blue: 0.957, alpha: 1)
@@ -55,7 +58,7 @@ final class LogInView: BaseView {
     //MARK: - кнопки
     
     private lazy var forgotPasswordButton: UIButton = {
-        let button = createMainButton(title: "Forgot Password?", titleColor: .darkGray, font: .semibold15, backgroundColor: .white)
+        let button = createMainButton(title: "Forgot Password?", titleColor: .darkGray, font: .semibold15.withSize(14), backgroundColor: .white)
         return button
     }()
     private lazy var logInButton: UIButton = {
@@ -64,8 +67,11 @@ final class LogInView: BaseView {
     }()
     private lazy var dontHaveAccText: UIButton = {
         let textInformation =  createMainButton(title: "Don’t have an account? Register Now", titleColor: .darkGray, font: .semibold15, backgroundColor: .white)
+        //открытие новой вьюшки
+        textInformation.addTarget(self, action: #selector(actionRegisterButton), for: .touchUpInside)
         return textInformation
     }()
+
     private lazy var googleButton: UIButton = {
         let button = createImageButton(imageName: "google", borderColor: .lightGray)
         return button
@@ -105,7 +111,7 @@ final class LogInView: BaseView {
         passwordTextField.rightViewMode = .always
     }
     
-    
+
     //MARK: - layoutSubviews
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -209,5 +215,10 @@ final class LogInView: BaseView {
         passwordTextField.isSecureTextEntry = !sender.isSelected
     }
 }
-
+//открытие нового вью
+private extension LogInView {
+    @objc func actionRegisterButton(){
+        delegate?.showNewView(VC: logInViewController())
+    }
+}
 

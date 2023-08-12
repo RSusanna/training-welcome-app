@@ -16,6 +16,8 @@
 		D1B7CA312A8168BA009CC365 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B7CA302A8168BA009CC365 /* LogInViewController.swift */; };
 		D1B8E0D42A869FD500086ECE /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B8E0D32A869FD500086ECE /* UIFont + Extension.swift */; };
 		D1B8E0D62A86A98600086ECE /* AppTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B8E0D52A86A98600086ECE /* AppTextField.swift */; };
+		D1B8E0D82A878FBB00086ECE /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B8E0D72A878FBB00086ECE /* RegisterView.swift */; };
+		D1B8E0DA2A878FD200086ECE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B8E0D92A878FD200086ECE /* RegisterViewController.swift */; };
 		D1F8AC412A84F52E00B4F7B6 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F8AC402A84F52E00B4F7B6 /* UIColor + Extension.swift */; };
 		D1F8AC472A84F8D100B4F7B6 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F8AC462A84F8D100B4F7B6 /* AppColor.swift */; };
 		D1F8AC4A2A84FF8F00B4F7B6 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F8AC492A84FF8F00B4F7B6 /* BaseView.swift */; };
@@ -34,6 +36,8 @@
 		D1B7CA302A8168BA009CC365 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		D1B8E0D32A869FD500086ECE /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
 		D1B8E0D52A86A98600086ECE /* AppTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTextField.swift; sourceTree = "<group>"; };
+		D1B8E0D72A878FBB00086ECE /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		D1B8E0D92A878FD200086ECE /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D1F8AC402A84F52E00B4F7B6 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		D1F8AC462A84F8D100B4F7B6 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		D1F8AC492A84FF8F00B4F7B6 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
@@ -73,6 +77,7 @@
 				D1F8AC442A84F89F00B4F7B6 /* Base */,
 				D1F8AC482A84FECB00B4F7B6 /* Start */,
 				D1F8AC4D2A8505A400B4F7B6 /* LogIn */,
+				D1B8E0DB2A878FD800086ECE /* Registration */,
 				D1F8AC422A84F53400B4F7B6 /* Extension */,
 				D1676E792A7F9964005B47CC /* AppDelegate.swift */,
 				D1676E822A7F996B005B47CC /* Assets.xcassets */,
@@ -80,6 +85,15 @@
 				D1676E872A7F996B005B47CC /* Info.plist */,
 			);
 			path = "training welcome app";
+			sourceTree = "<group>";
+		};
+		D1B8E0DB2A878FD800086ECE /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				D1B8E0D72A878FBB00086ECE /* RegisterView.swift */,
+				D1B8E0D92A878FD200086ECE /* RegisterViewController.swift */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 		D1F8AC422A84F53400B4F7B6 /* Extension */ = {
@@ -215,6 +229,8 @@
 				D1F8AC412A84F52E00B4F7B6 /* UIColor + Extension.swift in Sources */,
 				D1F8AC4C2A84FFB500B4F7B6 /* BaseViewController.swift in Sources */,
 				D1676E7A2A7F9964005B47CC /* AppDelegate.swift in Sources */,
+				D1B8E0D82A878FBB00086ECE /* RegisterView.swift in Sources */,
+				D1B8E0DA2A878FD200086ECE /* RegisterViewController.swift in Sources */,
 				D14EE3242A825A6F002BF7FE /* LogInView.swift in Sources */,
 				D1F8AC4A2A84FF8F00B4F7B6 /* BaseView.swift in Sources */,
 			);
