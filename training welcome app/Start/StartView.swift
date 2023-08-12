@@ -4,7 +4,7 @@ import UIKit
 protocol ShowNewViewProtocol: AnyObject {
     func showNewView( VC: UIViewController)
 }
-
+//MARK: - Константы
 extension StartView {
     struct Constants {
         let darkColor = AppColor.darkBlueUIColor.color
@@ -28,14 +28,16 @@ final class StartView: BaseView {
     weak var delegate: ShowNewViewProtocol?
     
     private let constants: Constants
-    
+    //MARK: - Картинки
     private lazy var backgroundImageView: UIImageView = {
         return UIImageView(image: constants.backgroundImage)
     }()
     
     private lazy var logoImageView: UIImageView = {
-        return UIImageView(image: constants.logoImage)
+        let logoImage = createImageView(imageName: "branding")
+        return logoImage
     }()
+
     //MARK: - кнопки
     private lazy var loginButton: UIButton = {
         let button = createMainButton(

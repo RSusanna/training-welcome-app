@@ -27,6 +27,7 @@ class BaseView: UIView {
     
     func createImageView(imageName: String) -> UIImageView {
         let imageView = UIImageView()
+        imageView.image = UIImage(named: imageName)
         return imageView
     }
     
