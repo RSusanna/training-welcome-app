@@ -22,13 +22,11 @@ final class RegisterView: BaseView {
     }()
     //MARK: - вьюшки
     private lazy var leftLine: UIView = {
-        let view = createLeftLineView()
-        view.frame = CGRect(x: 22, y: 625, width: 112, height: 1)
+        let view = createLineView()
         return view
     }()
     private lazy var rightLine: UIView = {
-        let view = createRightLineView()
-        view.frame = CGRect(x: 250, y: 625, width: 112, height: 1)
+        let view = createLineView()
         return view
     }()
     //MARK: - текст
@@ -138,14 +136,12 @@ final class RegisterView: BaseView {
         
         verticalStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            //ИСПРАВИТЬ
             verticalStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 22),
             verticalStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -22),
             verticalStackView.topAnchor.constraint(equalTo: mainText.bottomAnchor, constant: 16),
         ])
                 
         NSLayoutConstraint.activate([
-            //ИСПРАВИТЬ
             orLogInWithText.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 146),
             orLogInWithText.topAnchor.constraint(equalTo: self.topAnchor, constant: 515),
             orLogInWithText.widthAnchor.constraint(equalToConstant: 84),
@@ -154,7 +150,6 @@ final class RegisterView: BaseView {
 
         socialMesiaStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            //ИСПРАВИТЬ
             socialMesiaStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 22),
             socialMesiaStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -22),
             socialMesiaStackView.heightAnchor.constraint(equalToConstant: 56),
@@ -162,10 +157,8 @@ final class RegisterView: BaseView {
             ])
         orRegisterText.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            //ИСПРАВИТЬ
             orRegisterText.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 140),
             orRegisterText.topAnchor.constraint(equalTo: self.topAnchor, constant: 620),
-//            orRegisterText.widthAnchor.constraint(equalToConstant: 101),
             ])
     }
 }

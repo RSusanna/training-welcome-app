@@ -78,6 +78,7 @@
 		D1676E782A7F9964005B47CC /* training welcome app */ = {
 			isa = PBXGroup;
 			children = (
+				D1E626BC2A8C19A100CF2334 /* Router */,
 				D1F8AC442A84F89F00B4F7B6 /* Base */,
 				D1F8AC482A84FECB00B4F7B6 /* Start */,
 				D1F8AC4D2A8505A400B4F7B6 /* LogIn */,
@@ -98,6 +99,15 @@
 				D1B8E0D92A878FD200086ECE /* RegisterViewController.swift */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		D1E626BC2A8C19A100CF2334 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				D1E626B82A8C047600CF2334 /* AppRouterProtocol.swift */,
+				D1E626BA2A8C04A500CF2334 /* AppRpouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		D1F8AC422A84F53400B4F7B6 /* Extension */ = {
@@ -141,8 +151,6 @@
 			children = (
 				D1563AF42A7FCD47004CAB64 /* StartView.swift */,
 				D1676E7D2A7F9964005B47CC /* StartViewController.swift */,
-				D1E626B82A8C047600CF2334 /* AppRouterProtocol.swift */,
-				D1E626BA2A8C04A500CF2334 /* AppRpouter.swift */,
 			);
 			path = Start;
 			sourceTree = "<group>";

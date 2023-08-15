@@ -7,7 +7,7 @@ protocol StartViewDelegate: AnyObject {
 }
 //MARK: - Константы
 extension StartView {
-    struct Constants {
+    struct ConstantsForStartView {
         let darkColor = AppColor.darkBlueUIColor.color
         let lightBlueColor = AppColor.lightBlueUIColor.color
         
@@ -21,6 +21,7 @@ extension StartView {
         let logoImageBottomPadding: CGFloat = 44.0
         let logoImageSidePadding: CGFloat = 117.0
         let logoImageMultipyedHeight: CGFloat = 0.7
+        let borderWidht: CGFloat = 1
     }
 }
 
@@ -28,7 +29,7 @@ final class StartView: BaseView {
     
     weak var delegate: StartViewDelegate?
     
-    private let constants: Constants
+    private let constants: ConstantsForStartView
     //MARK: - Картинки
     private lazy var backgroundImageView: UIImageView = {
         return UIImageView(image: constants.backgroundImage)
@@ -56,7 +57,7 @@ final class StartView: BaseView {
             backgroundColor: .white
         )
         button.addTarget(self, action: #selector(registerButtonLogIn), for: .touchUpInside)
-        button.layer.borderWidth = 1
+        button.layer.borderWidth = constants.borderWidht
         button.layer.borderColor = constants.darkColor.cgColor
         return button
     }()
@@ -70,7 +71,7 @@ final class StartView: BaseView {
     }()
     
     override init(frame: CGRect) {
-        self.constants = Constants()
+        self.constants = ConstantsForStartView()
         super.init(frame: frame)
         addSubviews()
         setupViewsConstraints()
