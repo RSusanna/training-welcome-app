@@ -18,6 +18,8 @@
 		D1B8E0D62A86A98600086ECE /* AppTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B8E0D52A86A98600086ECE /* AppTextField.swift */; };
 		D1B8E0D82A878FBB00086ECE /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B8E0D72A878FBB00086ECE /* RegisterView.swift */; };
 		D1B8E0DA2A878FD200086ECE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B8E0D92A878FD200086ECE /* RegisterViewController.swift */; };
+		D1E626B92A8C047600CF2334 /* AppRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E626B82A8C047600CF2334 /* AppRouterProtocol.swift */; };
+		D1E626BB2A8C04A500CF2334 /* AppRpouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E626BA2A8C04A500CF2334 /* AppRpouter.swift */; };
 		D1F8AC412A84F52E00B4F7B6 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F8AC402A84F52E00B4F7B6 /* UIColor + Extension.swift */; };
 		D1F8AC472A84F8D100B4F7B6 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F8AC462A84F8D100B4F7B6 /* AppColor.swift */; };
 		D1F8AC4A2A84FF8F00B4F7B6 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F8AC492A84FF8F00B4F7B6 /* BaseView.swift */; };
@@ -38,6 +40,8 @@
 		D1B8E0D52A86A98600086ECE /* AppTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTextField.swift; sourceTree = "<group>"; };
 		D1B8E0D72A878FBB00086ECE /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		D1B8E0D92A878FD200086ECE /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		D1E626B82A8C047600CF2334 /* AppRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouterProtocol.swift; sourceTree = "<group>"; };
+		D1E626BA2A8C04A500CF2334 /* AppRpouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRpouter.swift; sourceTree = "<group>"; };
 		D1F8AC402A84F52E00B4F7B6 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		D1F8AC462A84F8D100B4F7B6 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		D1F8AC492A84FF8F00B4F7B6 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
@@ -137,6 +141,8 @@
 			children = (
 				D1563AF42A7FCD47004CAB64 /* StartView.swift */,
 				D1676E7D2A7F9964005B47CC /* StartViewController.swift */,
+				D1E626B82A8C047600CF2334 /* AppRouterProtocol.swift */,
+				D1E626BA2A8C04A500CF2334 /* AppRpouter.swift */,
 			);
 			path = Start;
 			sourceTree = "<group>";
@@ -222,6 +228,8 @@
 			files = (
 				D1B8E0D62A86A98600086ECE /* AppTextField.swift in Sources */,
 				D1B8E0D42A869FD500086ECE /* UIFont + Extension.swift in Sources */,
+				D1E626B92A8C047600CF2334 /* AppRouterProtocol.swift in Sources */,
+				D1E626BB2A8C04A500CF2334 /* AppRpouter.swift in Sources */,
 				D1B7CA312A8168BA009CC365 /* LogInViewController.swift in Sources */,
 				D1563AF52A7FCD47004CAB64 /* StartView.swift in Sources */,
 				D1676E7E2A7F9964005B47CC /* StartViewController.swift in Sources */,

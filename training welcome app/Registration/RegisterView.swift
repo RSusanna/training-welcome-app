@@ -1,4 +1,3 @@
-// я остановилась на том, что мне нужно текстфилды внести в стеквью и доделать эту страницу в целом
 import UIKit
 
 extension RegisterView {
@@ -8,8 +7,6 @@ extension RegisterView {
 }
 
 final class RegisterView: BaseView {
-    
-    weak var delegate: ShowNewViewProtocol?
     
     //MARK: - UILAbel
     private lazy var mainText: UILabel = {
@@ -98,15 +95,24 @@ final class RegisterView: BaseView {
         let view = AppTextField(fieldType: .confirmPassword)
         return view
     }()
-    //MARK: - layoutSubviews
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    
+    init() {
+        super.init(frame: .zero)
         addViews()
         setupViewsConstraints()
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        print("DEINT")
+    }
+    
     //MARK: - Добавление
     private func addViews(){
+        // Массив
         self.addSubview(mainText)
         self.addSubview(orLogInWithText)
         self.addSubview(leftLine)
@@ -121,26 +127,34 @@ final class RegisterView: BaseView {
     func setupViewsConstraints() {
         mainText.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
+            //ИСПРАВИТЬ
             mainText.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 22),
             mainText.topAnchor.constraint(equalTo: self.topAnchor, constant: 125),
             mainText.widthAnchor.constraint(equalToConstant: 280),
             mainText.heightAnchor.constraint(equalToConstant: 78)
         ])
+        
+        verticalStackView.arrangedSubviews.forEach({ $0.heightAnchor.constraint(equalToConstant: 56).isActive = true })
+        
+        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
+            //ИСПРАВИТЬ
+            verticalStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 22),
+            verticalStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -22),
+            verticalStackView.topAnchor.constraint(equalTo: mainText.bottomAnchor, constant: 16),
+        ])
+                
+        NSLayoutConstraint.activate([
+            //ИСПРАВИТЬ
             orLogInWithText.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 146),
             orLogInWithText.topAnchor.constraint(equalTo: self.topAnchor, constant: 515),
             orLogInWithText.widthAnchor.constraint(equalToConstant: 84),
             orLogInWithText.heightAnchor.constraint(equalToConstant: 17)
             ])
-        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            verticalStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 22),
-            verticalStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -22),
-            verticalStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 235),
-            verticalStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -231)
-        ])
+
         socialMesiaStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
+            //ИСПРАВИТЬ
             socialMesiaStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 22),
             socialMesiaStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -22),
             socialMesiaStackView.heightAnchor.constraint(equalToConstant: 56),
@@ -148,12 +162,10 @@ final class RegisterView: BaseView {
             ])
         orRegisterText.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
+            //ИСПРАВИТЬ
             orRegisterText.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 140),
             orRegisterText.topAnchor.constraint(equalTo: self.topAnchor, constant: 620),
 //            orRegisterText.widthAnchor.constraint(equalToConstant: 101),
             ])
     }
 }
-
-//
-//

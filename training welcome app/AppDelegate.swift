@@ -15,11 +15,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         return true
     }
-    
-
 }
-//MARK: - вопросы
-/*
- почему константы именно структура?
- */
-

@@ -1,8 +1,12 @@
 import UIKit
 
+protocol LogInViewDelegate: AnyObject {
+    func didTapRegister()
+}
+
 final class LogInView: BaseView {
     
-    weak var delegate: ShowNewViewProtocol?
+    weak var delegate: LogInViewDelegate?
     
     //MARK: - цвета экрана
     private let grayColor: UIColor = {
@@ -16,12 +20,10 @@ final class LogInView: BaseView {
     //MARK: - вьюшки
     private lazy var leftLine: UIView = {
         let view = createLeftLineView()
-        view.frame = CGRect(x: 22, y: 524, width: 112, height: 1)
         return view
     }()
     private lazy var rightLine: UIView = {
         let view = createRightLineView()
-        view.frame = CGRect(x: 242, y: 524, width: 112, height: 1)
         return view
     }()
 
@@ -41,23 +43,16 @@ final class LogInView: BaseView {
 
     //MARK: - Текстфилды
 
-    let emailTextField: UITextField = {
+    private let emailTextField: UITextField = {
         let view = AppTextField(fieldType: .email)
         return view
     }()
-    let passwordTextField: UITextField = {
+    
+    private let passwordTextField: UITextField = {
         let view = AppTextField(fieldType: .password)
        return view
     }()
-    // Создаем кнопку для переключения видимости текста
-    private lazy var toggleButton: UIButton = {
-        toggleButton = UIButton(type: .custom)
-        toggleButton.setImage(UIImage(named: "openEye"), for: .normal)
-        toggleButton.setImage(UIImage(named: "eye"), for: .selected)
-        toggleButton.frame = CGRect(x: 0, y: 0, width: 8, height: 8)
-        toggleButton.addTarget(self, action: #selector(toggleVisibility(_:)), for: .touchUpInside)
-    return toggleButton
-    }()
+    
     //MARK: - кнопки
     
     private lazy var forgotPasswordButton: UIButton = {
@@ -69,8 +64,16 @@ final class LogInView: BaseView {
         return button
     }()
     private lazy var dontHaveAccText: UIButton = {
-        let textInformation =  createMainButton(title: "Don’t have an account? Register Now", titleColor: .darkGray, font: .semibold15, backgroundColor: .white)
-        //открытие новой вьюшки
+        let attributesOfFirstPart = [NSAttributedString.Key.foregroundColor : UIColor.black]
+        //firstPartOfText
+        var FirstPartOfText = NSMutableAttributedString(string: "Don’t have an account? ", attributes: attributesOfFirstPart)
+        let attributesOfSecondPart = [NSAttributedString.Key.foregroundColor : UIColor.blue]
+        let secondPartOfText = NSAttributedString(string: "Register now", attributes: attributesOfSecondPart)
+        
+        FirstPartOfText.append(secondPartOfText)
+        
+        let textInformation =  createMainButton(title: "", titleColor: .darkGray, font: .semibold15, backgroundColor: .white)
+        textInformation.setAttributedTitle(FirstPartOfText, for: .normal)
         textInformation.addTarget(self, action: #selector(actionRegisterButton), for: .touchUpInside)
         return textInformation
     }()
@@ -95,16 +98,11 @@ final class LogInView: BaseView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         welcomeText.textColor = darkBlueColor
-        emailTextField.backgroundColor = grayColor
-        passwordTextField.backgroundColor = grayColor
         forgotPasswordButton.titleLabel?.textColor = grayColor
         logInButton.backgroundColor = darkBlueColor
         googleButton.clipsToBounds = true
         faceButton.clipsToBounds = true
         appleButton.clipsToBounds = true
-        passwordTextField.rightView = toggleButton
-        passwordTextField.rightView?.frame(forAlignmentRect: .init(x: 0, y: 0, width: 9, height: 9))
-        passwordTextField.rightViewMode = .always
     }
     
 
@@ -115,28 +113,30 @@ final class LogInView: BaseView {
         setupViewsConstraints()
     }
     
-    //MARK: - Добавление
-    private func addViews(){
-        self.addSubview(welcomeText)
-        self.addSubview(orLogInWithText)
-        self.addSubview(dontHaveAccText)
-        self.addSubview(emailTextField)
-        self.addSubview(passwordTextField)
-        self.addSubview(forgotPasswordButton)
-        self.addSubview(logInButton)
-        self.addSubview(googleButton)
-        self.addSubview(appleButton)
-        self.addSubview(faceButton)
-        self.addSubview(leftLine)
-        self.addSubview(rightLine)
+    deinit {
+        print("DEINT")
     }
+}
+
+private extension LogInView {
+    @objc func actionRegisterButton(){
+        delegate?.didTapRegister()
+    }
+    
+    //MARK: - Добавление
+    func addViews() {
+        [welcomeText, orLogInWithText, dontHaveAccText, emailTextField, passwordTextField,
+         forgotPasswordButton, logInButton, googleButton, appleButton, faceButton,
+         leftLine, rightLine].forEach({ self.addSubview($0) })
+    }
+    
     //MARK: - настройка констрейнтов
-    private func setupViewsConstraints() {
+    func setupViewsConstraints() {
         welcomeText.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             welcomeText.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 22),
             welcomeText.topAnchor.constraint(equalTo: self.topAnchor, constant: 125),
-            welcomeText.widthAnchor.constraint(equalToConstant: 280),
+            welcomeText.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 22),
             welcomeText.heightAnchor.constraint(equalToConstant: 78)
         ])
         orLogInWithText.translatesAutoresizingMaskIntoConstraints = false
@@ -200,17 +200,6 @@ final class LogInView: BaseView {
             appleButton.widthAnchor.constraint(equalToConstant: 50),
             appleButton.heightAnchor.constraint(equalToConstant: 50)
         ])
-    }
-    //скрытие текста у текстфилда
-    @objc func toggleVisibility(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        passwordTextField.isSecureTextEntry = !sender.isSelected
-    }
-}
-//открытие нового вью
-private extension LogInView {
-    @objc func actionRegisterButton(){
-        delegate?.showNewView(VC: RegisterViewController())
     }
 }
 

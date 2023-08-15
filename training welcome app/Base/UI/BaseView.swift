@@ -18,11 +18,13 @@ class BaseView: UIView {
     func createLeftLineView() -> UIView {
         let line = UIView()
         line.backgroundColor = .lightGray
+        line.frame = CGRect(x: 22, y: 524, width: 112, height: 1)
         return line
     }
     func createRightLineView() -> UIView {
         let line = UIView()
         line.backgroundColor = .lightGray
+        line.frame = CGRect(x: 242, y: 524, width: 112, height: 1)
         return line
     }
 

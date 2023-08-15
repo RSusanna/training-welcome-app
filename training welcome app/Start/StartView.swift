@@ -1,12 +1,15 @@
 import UIKit
 
 //создаем протокол покажи мне новую вью
-protocol ShowNewViewProtocol: AnyObject {
-    func showNewView( VC: UIViewController)
+protocol StartViewDelegate: AnyObject {
+    func didTapLogin()
+    func didTapRegister()
 }
 //MARK: - Константы
 extension StartView {
     struct Constants {
+        let darkColor = AppColor.darkBlueUIColor.color
+        let lightBlueColor = AppColor.lightBlueUIColor.color
         
         let backgroundImage: UIImage? = UIImage(named: "backgroundImage")
         let logoImage: UIImage? = UIImage(named: "Branding")
@@ -23,7 +26,7 @@ extension StartView {
 
 final class StartView: BaseView {
     
-    weak var delegate: ShowNewViewProtocol?
+    weak var delegate: StartViewDelegate?
     
     private let constants: Constants
     //MARK: - Картинки
@@ -52,8 +55,9 @@ final class StartView: BaseView {
             title: "Register", titleColor: .black, font: .semibold15,
             backgroundColor: .white
         )
+        button.addTarget(self, action: #selector(registerButtonLogIn), for: .touchUpInside)
         button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.darkBlue.cgColor
+        button.layer.borderColor = constants.darkColor.cgColor
         return button
     }()
     
@@ -61,7 +65,7 @@ final class StartView: BaseView {
         let button = UIButton(type: .system)
         button.setTitle("Continue as a guest", for: .normal)
         button.titleLabel?.font =  .semibold15
-        button.setTitleColor(.darkBlue, for: .normal)
+        button.setTitleColor(constants.lightBlueColor, for: .normal)
         return button
     }()
     
@@ -80,9 +84,14 @@ final class StartView: BaseView {
 // MARK: - Private
 //открытие нового вью
 private extension StartView {
-    @objc func actionButtonLogIn(){
-        delegate?.showNewView(VC: logInViewController())
+    @objc func actionButtonLogIn() {
+        delegate?.didTapLogin()
     }
+    
+    @objc func registerButtonLogIn() {
+        delegate?.didTapRegister()
+    }
+    
     //добавление вьюшек
     func addSubviews() {
         [backgroundImageView, loginButton,

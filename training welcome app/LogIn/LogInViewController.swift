@@ -4,19 +4,21 @@ final class logInViewController: BaseViewController {
     
     private var anotherView = LogInView()
     
+    private lazy var router: AppRouterProtocol = {
+        let router = AppRouter()
+        router.view = self
+        return router
+    }()
+    
     override func loadView() {
-        self.view = anotherView
         anotherView.delegate = self
-
-    }    
+        self.view = anotherView
+    }
 }
 
-// подписываем под протокол покажи мне новую вью
-extension logInViewController: ShowNewViewProtocol {
-    func showNewView(VC: UIViewController) {
-        let VC = VC
-        // соответственно открываем новую вью
-        navigationController?.pushViewController(VC, animated: true)
+extension logInViewController: LogInViewDelegate {
+    func didTapRegister() {
+        router.routeToRegister()
     }
 }
 
