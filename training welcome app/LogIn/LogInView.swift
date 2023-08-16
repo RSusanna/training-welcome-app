@@ -83,7 +83,7 @@ final class LogInView: BaseView {
         //firstPartOfText
         var FirstPartOfText = NSMutableAttributedString(string: "Don’t have an account? ", attributes: attributesOfFirstPart)
         let attributesOfSecondPart = [NSAttributedString.Key.foregroundColor : constants.lightBlueColor]
-        let secondPartOfText = NSAttributedString(string: "Register now", attributes: attributesOfSecondPart)
+        let secondPartOfText = NSAttributedString(string: " Register now", attributes: attributesOfSecondPart)
         
         FirstPartOfText.append(secondPartOfText)
         
